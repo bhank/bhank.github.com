@@ -4,6 +4,8 @@ title: Pages
 header: Pages
 group: navigation
 ---
+
+<h1>Pages:</h1>
   {% for node in site.pages %}
     {% if node.title != null %}
       {% if group == null or group == node.group %}
@@ -15,3 +17,20 @@ group: navigation
       {% endif %}
     {% endif %}
   {% endfor %}
+
+<h1>Posts:</h1>
+
+  {% for node in site.posts %}
+    {% if node.title != null %}
+      {% if group == null or group == node.group %}
+      	{% if page.url == node.url %}
+      	<li class="active"><a href="{{ BASE_PATH }}{{node.url}}" class="active">{{node.title}}</a></li>
+      	{% else %}
+      	<li><a href="{{ BASE_PATH }}{{node.url}}">{{node.title}}</a></li>
+      	{% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  
+  
+<h6>Jekyll'd at {{ site.time }}</h6>
